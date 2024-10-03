@@ -73,9 +73,6 @@
 # Ignore system files
 Thumbs.db
 
-# Ignore lock files for Ruby
-Gemfile.lock
-
 # Ignore any IDE specific files
 /.idea/
 /.vscode/
