@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql # ou mysql2, sqlite3, conforme o que você estiver usando
+  encoding: unicode
+  pool: 5
+  username: laravel # substitua pelo seu usuário do banco de dados
+  password: laravel   # substitua pela sua senha do banco de dados
+  host: localhost       # ou o endereço do servidor do banco de dados
+
+development:
+  <<: *default
+  database: pousada
+
+test:
+  <<: *default
+  database: pousada
+
+production:
+  <<: *default
+  database: pousada
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
