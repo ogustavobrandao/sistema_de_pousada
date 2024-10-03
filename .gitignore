@@ -53,8 +53,6 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# Ignore secret files
-/config/credentials.yml.enc
 
 # Ignore database files
 *.sqlite3
