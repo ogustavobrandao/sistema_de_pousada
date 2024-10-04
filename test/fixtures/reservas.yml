@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cliente_nome: MyString
+  status: MyString
+  data_reserva: 2024-10-03
+  quarto: one
+
+two:
+  cliente_nome: MyString
+  status: MyString
+  data_reserva: 2024-10-03
+  quarto: two
