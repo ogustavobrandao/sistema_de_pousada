@@ -8,7 +8,7 @@ class HomeController < ApplicationController
     when 'funcionario'
       render 'funcionarios/index'
     else
-      root_path
+      redirect_to unauthenticated_root_path
     end
   end
 end
