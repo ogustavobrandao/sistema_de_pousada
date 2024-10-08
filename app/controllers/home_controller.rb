@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     when 'administrador'
       render 'admins/index'
     when 'funcionario'
-      render 'funcionarios/index'
+      render 'funcionarios/home'
     else
       redirect_to unauthenticated_root_path
     end
