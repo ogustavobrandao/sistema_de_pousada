@@ -1,9 +1,37 @@
-<h1>New quarto</h1>
+<h1 class="my-4">New Quarto</h1>
 
-<%= render "form", quarto: @quarto %>
+<%= form_with(model: @quarto, class: "mb-4") do |form| %>
+  <% if @quarto.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@quarto.errors.count, "error") %> prohibited this quarto from being saved:</h2>
+      <ul>
+        <% @quarto.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<br>
+  <div class="mb-3">
+    <%= form.label :numero, class: "form-label" %>
+    <%= form.number_field :numero, class: "form-control" %>
+  </div>
 
-<div>
-  <%= link_to "Back to quartos", quartos_path %>
+  <div class="mb-3">
+    <%= form.label :andar, class: "form-label" %>
+    <%= form.text_field :andar, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :preco, class: "form-label" %>
+    <%= form.number_field :preco, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Quarto", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<div class="mt-4">
+  <%= link_to "Back to quartos", quartos_path, class: "btn btn-secondary" %>
 </div>
