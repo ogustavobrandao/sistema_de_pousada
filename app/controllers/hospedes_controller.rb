@@ -20,6 +20,7 @@ class HospedesController < ApplicationController
   def create
     @hospede = User.new(hospede_params)
     @hospede.role = 'hospede' # Define o papel como 'hospede'
+    @hospede.is_active = false
     if @hospede.save
       redirect_to hospede_path(@hospede), notice: 'Hóspede criado com sucesso.'
     else

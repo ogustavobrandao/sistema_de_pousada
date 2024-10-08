@@ -3,7 +3,8 @@ User.create!(
   cpf: '12345678912',
   email: 'admin@gmail.com',
   password: 'password',
-  role: 'administrador'
+  role: 'administrador',
+  is_active: true
 )
 
 User.create!(
@@ -11,7 +12,8 @@ User.create!(
   cpf: '12345678913',
   email: 'funcionario@gmail.com',
   password: 'password',
-  role: 'funcionario'
+  role: 'funcionario',
+  is_active: true
 )
 
 puts "Usuários criados com sucesso!"
