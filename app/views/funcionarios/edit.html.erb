@@ -1,0 +1,40 @@
+<h1>Editando Funcionário</h1>
+
+<%= form_with(model: @funcionario, url: funcionario_path(@funcionario), local: true) do |form| %>
+  <% if @funcionario.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@funcionario.errors.count, "erro") %> impediram que o funcionário fosse salvo:</h2>
+      <ul>
+        <% @funcionario.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :nome, class: "form-label" %>
+    <%= form.text_field :nome, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :cpf, class: "form-label" %>
+    <%= form.text_field :cpf, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "Atualizar Funcionário", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<br>
+
+<div class="mb-4">
+  <%= link_to "Mostrar este funcionário", funcionario_path(@funcionario), class: "btn btn-info" %>
+  <%= link_to "Voltar para Funcionários", funcionarios_path, class: "btn btn-secondary" %>
+</div>

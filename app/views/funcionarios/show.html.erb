@@ -1,0 +1,21 @@
+<h1>Detalhes do Funcionário</h1>
+
+<div id="<%= dom_id(@funcionario) %>">
+  <p>
+    <strong>Nome:</strong>
+    <%= @funcionario.nome %>
+  </p>
+  <p>
+    <strong>CPF:</strong>
+    <%= @funcionario.cpf %>
+  </p>
+  <p>
+    <strong>Email:</strong>
+    <%= @funcionario.email %>
+  </p>
+</div>
+
+<div class="mt-4">
+  <%= link_to "Editar", edit_funcionario_path(@funcionario), class: "btn btn-warning" %>
+  <%= link_to "Voltar para Funcionários", funcionarios_path, class: "btn btn-secondary" %>
+</div>

@@ -8,6 +8,7 @@ class FuncionariosController < ApplicationController
 
   # GET /funcionarios/1
   def show
+    @funcionario = User.find(params[:id])
   end
 
   # GET /funcionarios/new
@@ -20,7 +21,7 @@ class FuncionariosController < ApplicationController
     @funcionario = User.new(funcionario_params)
     @funcionario.role = 'funcionario'
     if @funcionario.save
-      redirect_to @funcionario, notice: 'Funcionário criado com sucesso.'
+      redirect_to funcionario_path(@funcionario), notice: 'Funcionário criado com sucesso.'
     else
       render :new
     end
@@ -28,12 +29,13 @@ class FuncionariosController < ApplicationController
 
   # GET /funcionarios/1/edit
   def edit
+    # @funcionario já está definido pelo before_action
   end
 
   # PATCH/PUT /funcionarios/1
   def update
     if @funcionario.update(funcionario_params)
-      redirect_to @funcionario, notice: 'Funcionário atualizado com sucesso.'
+      redirect_to funcionario_path(@funcionario), notice: 'Funcionário atualizado com sucesso.'
     else
       render :edit
     end
@@ -45,19 +47,13 @@ class FuncionariosController < ApplicationController
     redirect_to funcionarios_url, notice: 'Funcionário removido com sucesso.'
   end
 
-  # GET /funcionarios/search
-  def search
-    @funcionarios = User.where(role: 'funcionario').where("nome LIKE ?", "%#{params[:search]}%")
-    render :index
-  end
-
   private
 
-    def set_funcionario
-      @funcionario = User.find(params[:id])
-    end
+  def set_funcionario
+    @funcionario = User.find(params[:id]) # Certifique-se de que isso retorna o usuário correto
+  end
 
-    def funcionario_params
-      params.require(:user).permit(:nome, :email, :password, :password_confirmation)
-    end
+  def funcionario_params
+    params.require(:user).permit(:nome, :cpf, :email, :password, :password_confirmation)
+  end
 end
