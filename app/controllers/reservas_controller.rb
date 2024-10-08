@@ -1,5 +1,5 @@
 class ReservasController < ApplicationController
-  before_action :set_reserva, only: %i[ show edit update destroy ]
+  before_action :set_reserva, only: %i[show edit update destroy]
 
   # GET /reservas or /reservas.json
   def index
@@ -22,10 +22,11 @@ class ReservasController < ApplicationController
   # POST /reservas or /reservas.json
   def create
     @reserva = Reserva.new(reserva_params)
+    @reserva.user = current_user # Defina o user_id da reserva para o usuário atual
 
     respond_to do |format|
       if @reserva.save
-        format.html { redirect_to @reserva, notice: "Reserva was successfully created." }
+        format.html { redirect_to @reserva, notice: "Reserva criada com sucesso." }
         format.json { render :show, status: :created, location: @reserva }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class ReservasController < ApplicationController
   def update
     respond_to do |format|
       if @reserva.update(reserva_params)
-        format.html { redirect_to @reserva, notice: "Reserva was successfully updated." }
+        format.html { redirect_to @reserva, notice: "Reserva atualizada com sucesso." }
         format.json { render :show, status: :ok, location: @reserva }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,22 +50,23 @@ class ReservasController < ApplicationController
 
   # DELETE /reservas/1 or /reservas/1.json
   def destroy
-    @reserva.destroy!
+    @reserva.destroy
 
     respond_to do |format|
-      format.html { redirect_to reservas_path, status: :see_other, notice: "Reserva was successfully destroyed." }
+      format.html { redirect_to reservas_path, status: :see_other, notice: "Reserva destruída com sucesso." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_reserva
-      @reserva = Reserva.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def reserva_params
-      params.require(:reserva).permit(:cliente_nome, :status, :data_reserva, :quarto_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_reserva
+    @reserva = Reserva.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def reserva_params
+    params.require(:reserva).permit(:status, :data_reserva, :quarto_id) # Não inclua user_id aqui, pois será definido no controller
+  end
 end

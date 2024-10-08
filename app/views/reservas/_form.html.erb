@@ -1,37 +1,36 @@
-<%= form_with(model: reserva) do |form| %>
+<%= form_with(model: reserva, class: "mb-4") do |form| %>
   <% if reserva.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-danger">
       <h2><%= pluralize(reserva.errors.count, "error") %> prohibited this reserva from being saved:</h2>
-
       <ul>
-        <% reserva.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% reserva.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :cliente_nome, style: "display: block" %>
-    <%= form.text_field :cliente_nome %>
+  <div class="mb-3">
+    <%= form.label :user_id, class: "form-label" %>
+    <%= form.collection_select :user_id, User.where(role: 'hospede'), :id, :nome, { prompt: 'Selecione um hóspede' }, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :status, class: "form-label" %>
+    <%= form.text_field :status, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :data_reserva, class: "form-label" %>
+    <%= form.date_field :data_reserva, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :quarto_id, class: "form-label" %>
+    <%= form.collection_select :quarto_id, Quarto.all, :id, :descricao, { prompt: 'Selecione um Quarto' }, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div>
-    <%= form.label :data_reserva, style: "display: block" %>
-    <%= form.date_field :data_reserva %>
-  </div>
-
-  <div>
-    <%= form.label :quarto_id, style: "display: block" %>
-    <%= form.text_field :quarto_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Save Reserva", class: "btn btn-primary" %>
   </div>
 <% end %>

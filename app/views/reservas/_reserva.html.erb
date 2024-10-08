@@ -1,7 +1,7 @@
-<div id="<%= dom_id reserva %>">
+<div id="<%= dom_id(reserva) %>">
   <p>
-    <strong>Cliente nome:</strong>
-    <%= reserva.cliente_nome %>
+    <strong>Nome do Hóspede:</strong>
+    <%= reserva.user.nome %>
   </p>
 
   <p>
@@ -10,13 +10,12 @@
   </p>
 
   <p>
-    <strong>Data reserva:</strong>
-    <%= reserva.data_reserva %>
+    <strong>Data da Reserva:</strong>
+    <%= reserva.data_reserva.strftime("%d/%m/%Y") %>
   </p>
 
   <p>
     <strong>Quarto:</strong>
-    <%= reserva.quarto_id %>
+    <%= reserva.quarto.descricao %>
   </p>
-
 </div>
