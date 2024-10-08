@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :funcionarios
+  resources :hospedes
   resources :reservas
   resources :quartos
   get 'home/index'
@@ -14,5 +16,6 @@ Rails.application.routes.draw do
     end
   end
 
+  root to: 'devise/sessions#new'
   get "up" => "rails/health#show", as: :rails_health_check
 end
