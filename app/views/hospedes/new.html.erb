@@ -1,0 +1,49 @@
+<h1>Criar Novo Hóspede</h1>
+
+<%= form_with(model: @hospede, url: hospedes_path, local: true) do |form| %>
+  <% if @hospede.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@hospede.errors.count, "error") %> prohibited this hospede from being saved:</h2>
+      <ul>
+        <% @hospede.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :nome, class: "form-label" %>
+    <%= form.text_field :nome, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :cpf, class: "form-label" %>
+    <%= form.text_field :cpf, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :password, class: "form-label" %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :password_confirmation, class: "form-label" %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "Criar Hóspede", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<br>
+
+<div class="mb-4">
+  <%= link_to "Voltar para Hóspedes", hospedes_path, class: "btn btn-secondary" %>
+</div>

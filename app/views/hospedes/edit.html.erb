@@ -1,0 +1,40 @@
+<h1>Editando Hóspede</h1>
+
+<%= form_with(model: @hospede, url: hospede_path(@hospede), local: true) do |form| %>
+  <% if @hospede.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@hospede.errors.count, "erro") %> impediram que o hóspede fosse salvo:</h2>
+      <ul>
+        <% @hospede.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :nome, class: "form-label" %>
+    <%= form.text_field :nome, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :cpf, class: "form-label" %>
+    <%= form.text_field :cpf, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "Atualizar Hóspede", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<br>
+
+<div class="mb-4">
+  <%= link_to "Mostrar este hóspede", hospede_path(@hospede), class: "btn btn-info" %>
+  <%= link_to "Voltar para Hóspedes", hospedes_path, class: "btn btn-secondary" %>
+</div>

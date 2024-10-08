@@ -1,0 +1,21 @@
+<h1>Detalhes do Hóspede</h1>
+
+<div id="<%= dom_id(@hospede) %>">
+  <p>
+    <strong>Nome:</strong>
+    <%= @hospede.nome %>
+  </p>
+  <p>
+    <strong>CPF:</strong>
+    <%= @hospede.cpf %>
+  </p>
+  <p>
+    <strong>Email:</strong>
+    <%= @hospede.email %>
+  </p>
+</div>
+
+<div class="mt-4">
+  <%= link_to "Editar", edit_hospede_path(@hospede), class: "btn btn-warning" %>
+  <%= link_to "Voltar para Hóspedes", hospedes_path, class: "btn btn-secondary" %>
+</div>
