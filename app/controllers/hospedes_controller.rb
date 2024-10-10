@@ -4,7 +4,11 @@ class HospedesController < ApplicationController
 
   # GET /hospedes
   def index
-    @hospedes = User.where(role: 'hospede')
+    if params[:search].present?
+      @hospedes = User.where("nome ILIKE ?", "%#{params[:search]}%")
+    else
+      @hospedes = User.where(role: 'hospede')
+    end
   end
 
   # GET /hospedes/1

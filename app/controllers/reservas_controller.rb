@@ -4,7 +4,11 @@ class ReservasController < ApplicationController
 
   # GET /reservas or /reservas.json
   def index
-    @reservas = Reserva.all
+    if params[:search].present?
+      @reservas = Reserva.where("status ILIKE ?", "%#{params[:search]}%")
+    else
+      @reservas = Reserva.all
+    end
   end
 
   # GET /reservas/1 or /reservas/1.json

@@ -4,7 +4,11 @@ class ContasController < ApplicationController
 
   # GET /contas
   def index
-    @contas = User.all
+    if params[:search].present?
+      @contas = User.where("nome ILIKE ?", "%#{params[:search]}%")
+    else
+      @contas = User.all
+    end
   end
 
   # GET /contas/1

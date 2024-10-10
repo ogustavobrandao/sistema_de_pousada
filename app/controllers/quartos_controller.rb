@@ -4,7 +4,11 @@ class QuartosController < ApplicationController
 
   # GET /quartos or /quartos.json
   def index
-    @quartos = Quarto.all
+    if params[:search].present?
+      @quartos = Quarto.where("numero::text ILIKE ?", "%#{params[:search]}%")
+    else
+      @quartos = Quarto.all
+    end
   end
 
   # GET /quartos/1 or /quartos/1.json

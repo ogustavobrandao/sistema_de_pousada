@@ -4,7 +4,11 @@ class FuncionariosController < ApplicationController
 
   # GET /funcionarios
   def index
-    @funcionarios = User.where(role: 'funcionario')
+    if params[:search].present?
+      @funcionarios = User.where("nome ILIKE ?", "%#{params[:search]}%")
+    else
+      @funcionarios = User.where(role: 'funcionario')
+    end
   end
 
   # GET /funcionarios/1
