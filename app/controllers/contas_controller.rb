@@ -58,6 +58,8 @@ class ContasController < ApplicationController
   end
 
   def conta_params
-    params.require(:user).permit(:nome, :cpf, :role, :is_active, :email, :password, :password_confirmation)
+    if current_user.admin?
+      params.require(:user).permit(:nome, :cpf, :role, :is_active, :email, :password, :password_confirmation)
+    end
   end
 end
