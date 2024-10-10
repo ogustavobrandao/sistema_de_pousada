@@ -10,6 +10,8 @@ gem 'sprockets-rails', '~> 3.5.2'
 
 gem 'devise'
 
+gem 'bundler-audit'
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
