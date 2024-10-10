@@ -1,0 +1,21 @@
+<h1>Detalhes do Usuário</h1>
+
+<div id="<%= dom_id(@conta) %>">
+  <p>
+    <strong>Nome:</strong>
+    <%= @conta.nome %>
+  </p>
+  <p>
+    <strong>CPF:</strong>
+    <%= @conta.cpf %>
+  </p>
+  <p>
+    <strong>Email:</strong>
+    <%= @conta.email %>
+  </p>
+</div>
+
+<div class="mt-4">
+  <%= link_to "Editar", edit_conta_path(@conta), class: "btn btn-warning" %>
+  <%= link_to "Voltar para Usuários", contas_path, class: "btn btn-secondary" %>
+</div>

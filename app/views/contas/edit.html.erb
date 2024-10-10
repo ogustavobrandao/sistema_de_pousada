@@ -1,0 +1,58 @@
+<h1>Editando Usuário</h1>
+
+<%= form_with(model: @conta, url: conta_path(@conta), local: true) do |form| %>
+  <% if @conta.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@conta.errors.count, "erro") %> impediram que o usuário fosse salvo:</h2>
+      <ul>
+        <% @conta.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :nome, class: "form-label" %>
+    <%= form.text_field :nome, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :cpf, class: "form-label" %>
+    <%= form.text_field :cpf, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+  <%= form.label :role, "Escolha o papel do usuário", class: "form-label" %>
+  <%= form.select :role, 
+      options_for_select([['Administrador', 'administrador'], ['Funcionário', 'funcionario'], ['Hóspede', 'hospede']]), 
+      { prompt: 'Selecione uma opção' }, 
+      class: 'form-control' %>
+  </div>
+
+  <div class="form-check mb-3">
+    <%= form.check_box :is_active, class: "form-check-input", id: "is_active" %>
+    <%= form.label :is_active, "Ativo", class: "form-check-label", for: "is_active" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :password, class: "form-label" %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "Atualizar Usuário", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<br>
+
+<div class="mb-4">
+  <%= link_to "Mostrar este usuário", conta_path(@conta), class: "btn btn-info" %>
+  <%= link_to "Voltar para Usuários", contas_path, class: "btn btn-secondary" %>
+</div>

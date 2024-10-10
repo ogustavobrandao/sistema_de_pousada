@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :hospedes
   resources :reservas
   resources :quartos
+  resources :contas
+
   get 'home/index'
   devise_for :users
 
