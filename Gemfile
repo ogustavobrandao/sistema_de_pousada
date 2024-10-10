@@ -14,6 +14,7 @@ gem 'bundler-audit'
 
 gem 'brakeman'
 
+gem 'rubocop', require: false
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 

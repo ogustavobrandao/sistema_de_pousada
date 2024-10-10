@@ -10,4 +10,12 @@ class User < ApplicationRecord
   validates :role, presence: true, inclusion: { in: %w[administrador funcionario hospede] }
   validates :is_active, inclusion: { in: [true, false] }
   validates :password, presence: true, on: :create 
+
+  def admin?
+    role == 'administrador'
+  end
+
+  def funcionario?
+    role == 'funcionario'
+  end
 end
