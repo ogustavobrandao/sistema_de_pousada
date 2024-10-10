@@ -50,7 +50,7 @@ class FuncionariosController < ApplicationController
   private
 
   def set_funcionario
-    @funcionario = User.find(params[:id]) # Certifique-se de que isso retorna o usuário correto
+    @funcionario = User.find(params[:id])
   end
 
   def funcionario_params

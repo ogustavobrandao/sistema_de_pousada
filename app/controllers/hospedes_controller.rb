@@ -19,7 +19,7 @@ class HospedesController < ApplicationController
   # POST /hospedes
   def create
     @hospede = User.new(hospede_params)
-    @hospede.role = 'hospede' # Define o papel como 'hospede'
+    @hospede.role = 'hospede'
     @hospede.is_active = false
     if @hospede.save
       redirect_to hospede_path(@hospede), notice: 'Hóspede criado com sucesso.'
@@ -51,7 +51,7 @@ class HospedesController < ApplicationController
   private
 
   def set_hospede
-    @hospede = User.find(params[:id]) # Certifique-se de que isso retorna o usuário correto
+    @hospede = User.find(params[:id])
   end
 
   def hospede_params

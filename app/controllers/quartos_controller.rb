@@ -25,7 +25,7 @@ class QuartosController < ApplicationController
 
     respond_to do |format|
       if @quarto.save
-        format.html { redirect_to @quarto, notice: "Quarto was successfully created." }
+        format.html { redirect_to @quarto, notice: "Quarto criado com sucesso." }
         format.json { render :show, status: :created, location: @quarto }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class QuartosController < ApplicationController
   def update
     respond_to do |format|
       if @quarto.update(quarto_params)
-        format.html { redirect_to @quarto, notice: "Quarto was successfully updated." }
+        format.html { redirect_to @quarto, notice: "Quarto atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @quarto }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,18 +52,16 @@ class QuartosController < ApplicationController
     @quarto.destroy!
 
     respond_to do |format|
-      format.html { redirect_to quartos_path, status: :see_other, notice: "Quarto was successfully destroyed." }
+      format.html { redirect_to quartos_path, status: :see_other, notice: "Quarto removido com sucesso." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_quarto
       @quarto = Quarto.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def quarto_params
       params.require(:quarto).permit(:numero, :andar, :preco)
     end

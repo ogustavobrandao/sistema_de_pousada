@@ -22,7 +22,7 @@ class ReservasController < ApplicationController
   # POST /reservas or /reservas.json
   def create
     @reserva = Reserva.new(reserva_params)
-    @reserva.user = current_user # Defina o user_id da reserva para o usuário atual
+    @reserva.user = current_user
 
     respond_to do |format|
       if @reserva.save
@@ -60,13 +60,11 @@ class ReservasController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_reserva
     @reserva = Reserva.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def reserva_params
-    params.require(:reserva).permit(:status, :data_reserva, :quarto_id) # Não inclua user_id aqui, pois será definido no controller
+    params.require(:reserva).permit(:status, :data_reserva, :quarto_id) 
   end
 end
